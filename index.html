@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ওয়েবসাইট আপডেট চলছে</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      animation: fadeIn 2s ease-in-out;
+      padding: 20px;
+    }
+
+    .animation {
+      display: inline-block;
+      margin-bottom: 20px;
+    }
+
+    .animation span {
+      font-size: 4rem;
+      font-weight: bold;
+      color: #ff6b6b;
+      animation: wave 1.2s infinite;
+      margin: 0 5px;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-top: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    p {
+      font-size: 1.3rem;
+      margin: 10px 0;
+      opacity: 0.9;
+      animation: fadeIn 3s ease-in-out;
+    }
+
+    .countdown {
+      margin-top: 15px;
+      font-size: 1.5rem;
+      color: #00e676;
+      font-weight: bold;
+    }
+
+    @keyframes wave {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="animation">
+      <span>U</span><span>P</span><span>D</span><span>A</span><span>T</span><span>E</span>
+    </div>
+    <h1>আপডেটের কাজ চলছে...</h1>
+    <p>এই মুহূর্তে ওয়েবসাইট বন্ধ আছে।</p>
+    <p>২২ অক্টোবর রাত ১১:০০ টায় পুনরায় চালু হবে ওয়েবসাইট।</p>
+    <div class="countdown" id="countdown"></div>
+  </div>
+
+  <script>
+    // Timer Function
+    function countdownTimer() {
+      const targetDate = new Date("2024-10-22T23:00:00").getTime(); // রাত ১১:০০
+      const now = new Date().getTime();
+      const timeLeft = targetDate - now;
+
+      const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerText = 
+        `শুধু ${hours} ঘন্টা ${minutes} মিনিট ${seconds} সেকেন্ড বাকি!`;
+
+      if (timeLeft < 0) {
+        document.getElementById("countdown").innerText = "ওয়েবসাইট চালু হয়েছে!";
+      }
+    }
+
+    // Timer Update Every Second
+    setInterval(countdownTimer, 1000);
+
+    // Message Update After 5 Seconds
+    setTimeout(() => {
+      document.querySelector('p').innerText = "আমাদের সাথে থাকার জন্য ধন্যবাদ!";
+    }, 5000);
+  </script>
+</body>
+</html>
